@@ -298,7 +298,7 @@
     <button class="btn-global" id="trophyNextBtn" style="display:none;" onclick="openStage(19)">Read Letter 💌</button>
   </div>
 
-  <!-- STAGE 19: Grand Letter Scroll (Aapka Chitti Wala Stage) -->
+  <!-- STAGE 19 -->
   <div id="stage-19" class="screen">
     <div class="scroll-letter">
       <h2>Dear ZoYa ✨</h2>
@@ -312,7 +312,7 @@
     <button class="key-btn" style="margin-top:10px;" onclick="openStage(20)">Final Wish 🎤</button>
   </div>
 
-  <!-- STAGE 20: Voice Wish Final -->
+  <!-- STAGE 20 -->
   <div id="stage-20" class="screen">
     <div class="title-gold">Special Voice Wish 🎤</div>
     <div class="subtitle-light">Listening to Amir's Birthday Voice Wish...</div>
@@ -325,21 +325,25 @@
     const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
     function playTapSound() {
-      if (audioCtx.state === 'suspended') audioCtx.resume();
-      const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain();
-      osc.type = 'sine'; osc.frequency.setValueAtTime(600, audioCtx.currentTime);
-      osc.frequency.exponentialRampToValueAtTime(200, audioCtx.currentTime + 0.08);
-      gain.gain.setValueAtTime(0.3, audioCtx.currentTime); gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.08);
-      osc.connect(gain); gain.connect(audioCtx.destination); osc.start(); osc.stop(audioCtx.currentTime + 0.08);
+      try {
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain();
+        osc.type = 'sine'; osc.frequency.setValueAtTime(600, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(200, audioCtx.currentTime + 0.08);
+        gain.gain.setValueAtTime(0.3, audioCtx.currentTime); gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.08);
+        osc.connect(gain); gain.connect(audioCtx.destination); osc.start(); osc.stop(audioCtx.currentTime + 0.08);
+      } catch(e) {}
     }
 
     function playPopSound() {
-      if (audioCtx.state === 'suspended') audioCtx.resume();
-      const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain();
-      osc.type = 'triangle'; osc.frequency.setValueAtTime(150, audioCtx.currentTime);
-      osc.frequency.exponentialRampToValueAtTime(400, audioCtx.currentTime + 0.12);
-      gain.gain.setValueAtTime(0.5, audioCtx.currentTime); gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.12);
-      osc.connect(gain); gain.connect(audioCtx.destination); osc.start(); osc.stop(audioCtx.currentTime + 0.12);
+      try {
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain();
+        osc.type = 'triangle'; osc.frequency.setValueAtTime(150, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(400, audioCtx.currentTime + 0.12);
+        gain.gain.setValueAtTime(0.5, audioCtx.currentTime); gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.12);
+        osc.connect(gain); gain.connect(audioCtx.destination); osc.start(); osc.stop(audioCtx.currentTime + 0.12);
+      } catch(e) {}
     }
 
     function speakWish() {
@@ -384,11 +388,18 @@
       playTapSound();
       document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
       document.getElementById(`stage-${num}`).classList.add('active');
-      confetti({ particleCount: 35, spread: 45 });
+      try {
+        confetti({ particleCount: 35, spread: 45 });
+      } catch(e) {}
       if (num === 20) setTimeout(speakWish, 800);
     }
 
-    function openLock() { playPopSound(); document.getElementById('lockIcon').innerText = '🔓'; confetti({ particleCount: 80 }); setTimeout(() => openStage(3), 900); }
+    function openLock() { 
+      playPopSound(); 
+      document.getElementById('lockIcon').innerText = '🔓'; 
+      try { confetti({ particleCount: 80 }); } catch(e) {} 
+      setTimeout(() => openStage(3), 900); 
+    }
     let candlesOut = 0;
     function extinguishCandle(el) {
       const flame = el.querySelector('.flame-light');
@@ -404,7 +415,11 @@
         if (poppedCount === 4) setTimeout(() => openStage(5), 900);
       }
     }
-    function revealCrystalWish() { playPopSound(); document.getElementById('crystalWishBox').innerText = "✨ May life bless ZoYa with endless joy & positivity!"; document.getElementById('crystalNextBtn').style.display = 'inline-block'; }
+    function revealCrystalWish() { 
+      playPopSound(); 
+      document.getElementById('crystalWishBox').innerText = "✨ May life bless ZoYa with endless joy & positivity!"; 
+      document.getElementById('crystalNextBtn').style.display = 'inline-block'; 
+    }
     
     const photos = [
       { src: "./1.jpg", cap: "ZoYa's Most Charming Smile ✨" },
@@ -420,7 +435,10 @@
       document.getElementById('polaroidCap').innerText = photos[photoIdx].cap;
     }
 
-    function showerRoses() { playPopSound(); confetti({ particleCount: 60, colors: ['#ff7675', '#d63031'] }); document.getElementById('roseNextBtn').style.display = 'inline-block'; }
+    function showerRoses() { 
+      playPopSound(); 
+      try { confetti({ particleCount: 60, colors: ['#ff7675', '#d63031'] }); } catch(e) {} 
+      document.getElementById('roseNextBtn').style.display = 'inline-block'; 
+    }
     function catchStar() { playPopSound(); document.getElementById('starText').style.opacity = '1'; document.getElementById('starNextBtn').style.display = 'inline-block'; }
-    function treatCupcake() { playPopSound(); confetti({ particleCount: 40 }); document.getElementById('cupcakeNextBtn').style.display = 'inline-block'; }
-    function openEnvelope() { playPopSound(); document.ge
+    function treatCupcake() { 
