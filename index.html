@@ -171,4 +171,350 @@
     .vinyl-wrapper {
       width: 200px; height: 200px;
       background: radial-gradient(circle, #222 30%, #111 70%, #000 100%);
-      border-radius: 
+      border-radius: 50%;
+      border: 8px solid #333;
+      display: flex; justify-content: center; align-items: center;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+      margin: 20px 0;
+      position: relative;
+    }
+    .vinyl-wrapper.spinning { animation: spin 4s linear infinite; }
+    @keyframes spin { 100% { transform: rotate(360deg); } }
+    .vinyl-center {
+      width: 70px; height: 70px; background: #d63031; border-radius: 50%;
+      border: 4px solid #ffeaa7; display: flex; justify-content: center; align-items: center; font-size: 20px;
+    }
+
+    /* Stage 7: Letter Scroll */
+    .scroll-letter {
+      background: linear-gradient(135deg, #fffdf9 0%, #fbe3e8 100%);
+      padding: 30px 22px;
+      border-radius: 20px;
+      color: #4a3e3d;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      text-align: left;
+      line-height: 1.8;
+      border: 2px solid #ffd1d8;
+    }
+    .scroll-letter h2 { font-family: 'Playfair Display', serif; color: #d63031; font-size: 30px; text-align: center; margin-bottom: 12px; }
+    .scroll-letter p { font-size: 15px; margin-bottom: 12px; }
+    .highlight-quote {
+      background: rgba(214, 48, 49, 0.08);
+      border-left: 4px solid #d63031;
+      padding: 12px 14px;
+      font-family: 'Caveat', cursive;
+      font-size: 22px;
+      color: #2d3436;
+      margin: 14px 0;
+      border-radius: 4px;
+      line-height: 1.5;
+    }
+    .from-sign { text-align: right; font-family: 'Caveat', cursive; font-size: 28px; color: #d63031; font-weight: bold; margin-top: 15px; }
+
+    .btn-global {
+      margin-top: 25px;
+      padding: 12px 30px;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.4);
+      color: #fff;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 15px;
+      transition: all 0.3s;
+    }
+    .btn-global:hover { background: rgba(255,255,255,0.3); transform: translateY(-2px); }
+  </style>
+</head>
+<body>
+
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- STAGE 1: Magical Gift Box -->
+  <div id="stage-1" class="screen active">
+    <div class="title-gold">Happy Birthday ZoYa ✨</div>
+    <div class="subtitle-light">Tap the Gift Box to Open Amir's Surprise</div>
+    
+    <div class="gift-box-stage" onclick="openGiftStage()">
+      🎁
+    </div>
+  </div>
+
+  <!-- STAGE 2: Golden Magic Lock -->
+  <div id="stage-2" class="screen">
+    <div class="title-gold">Unlock Magic For ZoYa 🔓</div>
+    <div class="subtitle-light">Tap the golden key to turn the lock</div>
+    
+    <div class="lock-box" id="lockIcon">🔒</div>
+    <button class="key-btn" onclick="openLock()">🔑 Turn Golden Key</button>
+  </div>
+
+  <!-- STAGE 3: Cake & Candles -->
+  <div id="stage-3" class="screen">
+    <div class="title-gold">Blow The Candles ZoYa 🎂</div>
+    <div class="subtitle-light">Tap every candle to make your wish</div>
+    
+    <div class="cake-container">
+      <div class="candles-list">
+        <div class="candle-item" onclick="extinguishCandle(this)"><div class="flame-light"></div><div class="candle-stick"></div></div>
+        <div class="candle-item" onclick="extinguishCandle(this)"><div class="flame-light"></div><div class="candle-stick"></div></div>
+        <div class="candle-item" onclick="extinguishCandle(this)"><div class="flame-light"></div><div class="candle-stick"></div></div>
+        <div class="candle-item" onclick="extinguishCandle(this)"><div class="flame-light"></div><div class="candle-stick"></div></div>
+      </div>
+      <div class="cake-layer-top"></div>
+      <div class="cake-layer-mid"></div>
+      <div class="cake-layer-base"></div>
+    </div>
+    
+    <div id="cakeWishText" style="opacity: 0; transition: opacity 0.8s;" class="subtitle-light">
+      ✨ May ZoYa's life be filled with endless smiles! ✨
+    </div>
+  </div>
+
+  <!-- STAGE 4: Crystal Ball -->
+  <div id="stage-4" class="screen">
+    <div class="title-gold">Crystal Wishes For ZoYa 🔮</div>
+    <div class="subtitle-light">Tap the Magic Orb to reveal blessings</div>
+    
+    <div class="crystal-orb" onclick="revealCrystalWish()">
+      <span style="font-size: 50px;">✨</span>
+    </div>
+    
+    <div class="wish-text-box" id="crystalWishBox">Tap the crystal ball...</div>
+    <button class="btn-global" id="crystalNextBtn" style="display: none;" onclick="playTapSound(); unlockStage(5)">Continue ➔</button>
+  </div>
+
+  <!-- STAGE 5: Polaroid Gallery -->
+  <div id="stage-5" class="screen">
+    <div class="title-gold">ZoYa's Precious Gallery 📸</div>
+    <div class="subtitle-light">Tap card to see next photo</div>
+    
+    <div class="polaroid-card" id="polaroidBox" onclick="nextPolaroid()">
+      <img id="polaroidImg" src="./1.jpg" alt="Memory">
+      <div class="polaroid-caption" id="polaroidCap">ZoYa's Most Charming Smile ✨</div>
+    </div>
+    
+    <button class="btn-global" style="margin-top:20px;" onclick="playTapSound(); unlockStage(6)">Go to Music Stage 🎵</button>
+  </div>
+
+  <!-- STAGE 6: Vinyl Gramophone -->
+  <div id="stage-6" class="screen">
+    <div class="title-gold">Special Tune For ZoYa 🎵</div>
+    <div class="subtitle-light">Spin the record to play birthday melody</div>
+    
+    <div class="vinyl-wrapper" id="vinylDisc">
+      <div class="vinyl-center">🎶</div>
+    </div>
+    
+    <button class="key-btn" style="margin-top: 15px;" onclick="playVinylMusic()">▶ Spin & Play Melody</button>
+    <button class="btn-global" style="margin-top:20px;" onclick="playTapSound(); unlockStage(7)">Read Heartfelt Note 💌</button>
+  </div>
+
+  <!-- STAGE 7: Grand Letter Scroll -->
+  <div id="stage-7" class="screen">
+    <div class="scroll-letter">
+      <h2>Dear ZoYa ✨</h2>
+      <p>Aapke is khas birthday par Amir ki taraf se dil se ek baat...</p>
+      
+      <div class="highlight-quote">
+        "Kuch log zindagi me aakar use itna haseen bana dete hain, ki unki maujoodgi hi sabse bada gift ban jati hai. Aap mere liye wahi pyari dost hain!" 🌸✨
+      </div>
+
+      <p>Aapki dosti sach me bohot anmol hai. Main dua karta hu ki aapki zindagi hamesha khushiyon, kamyabi aur pyari si muskurahat se bhari rahe. Kabhi koi gham aapke kareeb bhi na aaye!</p>
+      
+      <p>Keep smiling always & stay as wonderful as you are!</p>
+      
+      <div class="from-sign">From: Amir 💖</div>
+    </div>
+    
+    <button class="btn-global" style="background: linear-gradient(45deg, #2ecc71, #27ae60); margin-top:15px;" onclick="speakWish()">🔊 Listen Voice Wish Again</button>
+    <button class="btn-global" style="background: linear-gradient(45deg, #d63031, #ff7675); margin-top:15px;" onclick="playTapSound(); unlockStage(1)">↺ Replay Experience</button>
+  </div>
+
+  <script>
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+    function playTapSound() {
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(600, audioCtx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(200, audioCtx.currentTime + 0.08);
+      gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.08);
+      osc.connect(gain); gain.connect(audioCtx.destination);
+      osc.start(); osc.stop(audioCtx.currentTime + 0.08);
+    }
+
+    function playPopSound() {
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(150, audioCtx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(400, audioCtx.currentTime + 0.12);
+      gain.gain.setValueAtTime(0.5, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.12);
+      osc.connect(gain); gain.connect(audioCtx.destination);
+      osc.start(); osc.stop(audioCtx.currentTime + 0.12);
+    }
+
+    function speakWish() {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const wishText = "Happy Birthday ZoYa! Amir ki taraf se aapko janamdin ki bohot bohot mubarakbaad. Aap hamesha aise hi muskuraati rahein aur aapki zindagi khushiyon se bhari rahe!";
+        const speech = new SpeechSynthesisUtterance(wishText);
+        speech.lang = 'hi-IN';
+        speech.rate = 0.9;
+        speech.pitch = 1.1;
+        window.speechSynthesis.speak(speech);
+      }
+    }
+
+    const canvas = document.getElementById('particles-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 3 + 1;
+        this.speedX = Math.random() * 1 - 0.5;
+        this.speedY = Math.random() * -1 - 0.5;
+        this.color = `hsl(${Math.random() * 60 + 300}, 100%, 75%)`;
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if (this.y < 0) this.y = canvas.height;
+      }
+      draw() {
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    for (let i = 0; i < 60; i++) particles.push(new Particle());
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => { p.update(); p.draw(); });
+      requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+
+    function unlockStage(stageNum) {
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      document.getElementById(`stage-${stageNum}`).classList.add('active');
+      confetti({ particleCount: 50, spread: 60, origin: { y: 0.6 } });
+
+      if (stageNum === 7) {
+        setTimeout(speakWish, 800);
+      }
+    }
+
+    function openGiftStage() {
+      playPopSound();
+      unlockStage(2);
+    }
+
+    function openLock() {
+      playPopSound();
+      document.getElementById('lockIcon').innerText = '🔓';
+      confetti({ particleCount: 120, spread: 80, origin: { y: 0.5 } });
+      setTimeout(() => unlockStage(3), 1000);
+    }
+
+    let candlesOut = 0;
+    function extinguishCandle(el) {
+      const flame = el.querySelector('.flame-light');
+      if (!flame.classList.contains('off')) {
+        playTapSound();
+        flame.classList.add('off');
+        candlesOut++;
+        if (candlesOut === 4) {
+          playPopSound();
+          document.getElementById('cakeWishText').style.opacity = '1';
+          confetti({ particleCount: 150, spread: 100, origin: { y: 0.5 } });
+          setTimeout(() => unlockStage(4), 2200);
+        }
+      }
+    }
+
+    const crystalWishes = [
+      "🌸 ZoYa, May your smile shine brighter than all the stars!",
+      "✨ May all your dreams and wishes come true this year!",
+      "💖 You deserve all the happiness and success in the world!",
+      "👑 May life always bless ZoYa with endless joy & positivity!"
+    ];
+    let wishIdx = 0;
+    function revealCrystalWish() {
+      playTapSound();
+      document.getElementById('crystalWishBox').innerText = crystalWishes[wishIdx];
+      wishIdx = (wishIdx + 1) % crystalWishes.length;
+      document.getElementById('crystalNextBtn').style.display = 'inline-block';
+      confetti({ particleCount: 35, spread: 40 });
+    }
+
+    const photos = [
+      { src: "./1.jpg", cap: "ZoYa's Most Charming Smile ✨" },
+      { src: "./2.jpg", cap: "Precious & Unforgettable Memories 🌸" },
+      { src: "./3.jpg", cap: "A Truly Special & Wonderful Friend 💖" }
+    ];
+    let photoIdx = 0;
+    function nextPolaroid() {
+      playTapSound();
+      photoIdx = (photoIdx + 1) % photos.length;
+      const card = document.getElementById('polaroidBox');
+      card.style.transform = 'scale(0.8) rotate(10deg)';
+      setTimeout(() => {
+        document.getElementById('polaroidImg').src = photos[photoIdx].src;
+        document.getElementById('polaroidCap').innerText = photos[photoIdx].cap;
+        card.style.transform = 'scale(1) rotate(0deg)';
+      }, 250);
+      confetti({ particleCount: 30, spread: 50 });
+    }
+
+    function playVinylMusic() {
+      playPopSound();
+      const disc = document.getElementById('vinylDisc');
+      disc.classList.add('spinning');
+      
+      speakWish();
+
+      const notes = [
+        {f: 264, d: 0.3}, {f: 264, d: 0.3}, {f: 297, d: 0.6}, {f: 264, d: 0.6}, {f: 352, d: 0.6}, {f: 330, d: 1.0},
+        {f: 264, d: 0.3}, {f: 264, d: 0.3}, {f: 297, d: 0.6}, {f: 264, d: 0.6}, {f: 396, d: 0.6}, {f: 352, d: 1.0}
+      ];
+      
+      let time = audioCtx.currentTime;
+      notes.forEach(note => {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(note.f, time);
+        gain.gain.setValueAtTime(0.2, time);
+        gain.gain.exponentialRampToValueAtTime(0.001, time + note.d);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start(time);
+        osc.stop(time + note.d);
+        time += note.d + 0.05;
+      });
+
+      confetti({ particleCount: 80, spread: 70, origin: { y: 0.6 } });
+    }
+  </script>
+</body>
+</html>
