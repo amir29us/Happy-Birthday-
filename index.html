@@ -26,7 +26,7 @@
       display: none;
       width: 100%;
       max-width: 440px;
-      padding: 20px 15px;
+      padding: 25px 20px;
       text-align: center;
       min-height: 100vh;
       flex-direction: column;
@@ -37,38 +37,38 @@
     }
     .screen.active {
       display: flex;
-      animation: magicFade 0.5s ease-out forwards;
+      animation: magicFade 0.6s ease-out forwards;
     }
     @keyframes magicFade {
-      0% { opacity: 0; transform: scale(0.9) translateY(10px); }
+      0% { opacity: 0; transform: scale(0.85) translateY(15px); }
       100% { opacity: 1; transform: scale(1) translateY(0); }
     }
     .title-gold {
       font-family: 'Dancing Script', cursive;
-      font-size: 34px;
+      font-size: 38px;
       background: linear-gradient(45deg, #ffeaa7, #fdcb6e, #fff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       text-shadow: 0 0 20px rgba(253, 203, 110, 0.4);
-      margin-bottom: 4px;
+      margin-bottom: 6px;
     }
     .subtitle-light {
       font-family: 'Caveat', cursive;
-      font-size: 20px;
+      font-size: 22px;
       color: #dfe6e9;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
     }
     .big-icon {
-      font-size: 80px;
+      font-size: 85px;
       cursor: pointer;
       margin: 15px 0;
       transition: transform 0.2s;
-      filter: drop-shadow(0 0 20px rgba(253, 203, 110, 0.5));
+      filter: drop-shadow(0 0 25px rgba(253, 203, 110, 0.6));
     }
     .big-icon:active { transform: scale(1.15); }
     
     .key-btn, .btn-global {
-      padding: 12px 26px;
+      padding: 12px 28px;
       background: linear-gradient(45deg, #fdcb6e, #e17055);
       border: none;
       border-radius: 30px;
@@ -86,73 +86,86 @@
     }
 
     /* Cake */
-    .cake-container { position: relative; width: 200px; height: 140px; margin: 10px 0; }
-    .candles-list { display: flex; justify-content: center; gap: 12px; position: absolute; top: -18px; width: 100%; z-index: 5; }
+    .cake-container { position: relative; width: 220px; height: 150px; margin: 15px 0; }
+    .candles-list { display: flex; justify-content: center; gap: 14px; position: absolute; top: -20px; width: 100%; z-index: 5; }
     .candle-item { cursor: pointer; display: flex; flex-direction: column; align-items: center; }
-    .flame-light { width: 10px; height: 16px; background: linear-gradient(to top, #ff7675, #ffeaa7); border-radius: 50%; box-shadow: 0 0 12px #ffeaa7; }
+    .flame-light { width: 12px; height: 18px; background: linear-gradient(to top, #ff7675, #ffeaa7); border-radius: 50%; box-shadow: 0 0 15px #ffeaa7; }
     .flame-light.off { display: none; }
-    .candle-stick { width: 6px; height: 30px; background: linear-gradient(#a29bfe, #6c5ce7); border-radius: 3px; }
-    .cake-layer-top { width: 120px; height: 40px; background: #fd79a8; border-radius: 10px 10px 0 0; margin: 0 auto; }
-    .cake-layer-mid { width: 160px; height: 45px; background: #ffeaa7; border-radius: 6px; margin: 0 auto; }
-    .cake-layer-base { width: 200px; height: 50px; background: #6c5ce7; border-radius: 0 0 10px 10px; margin: 0 auto; }
+    .candle-stick { width: 7px; height: 32px; background: linear-gradient(#a29bfe, #6c5ce7); border-radius: 3px; }
+    .cake-layer-top { width: 130px; height: 42px; background: #fd79a8; border-radius: 10px 10px 0 0; margin: 0 auto; }
+    .cake-layer-mid { width: 170px; height: 48px; background: #ffeaa7; border-radius: 6px; margin: 0 auto; }
+    .cake-layer-base { width: 220px; height: 55px; background: #6c5ce7; border-radius: 0 0 10px 10px; margin: 0 auto; }
 
     /* Balloons */
-    .balloons-grid { display: flex; justify-content: center; gap: 15px; margin: 10px 0; }
-    .balloon-item { font-size: 48px; cursor: pointer; }
+    .balloons-grid { display: flex; justify-content: center; gap: 18px; margin: 15px 0; }
+    .balloon-item { font-size: 50px; cursor: pointer; }
     .balloon-item.popped { visibility: hidden; opacity: 0; }
 
-    /* Polaroid */
+    /* Polaroid Photos */
     .polaroid-card {
-      background: #fff; padding: 10px 10px 22px 10px; border-radius: 10px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.4); width: 220px; color: #2d3436; margin: 0 auto; cursor: pointer;
+      background: #fff; padding: 10px 10px 25px 10px; border-radius: 12px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.4); width: 240px; color: #2d3436; margin: 0 auto; cursor: pointer;
     }
-    .polaroid-card img { width: 100%; height: 190px; object-fit: cover; border-radius: 6px; }
-    .polaroid-caption { font-family: 'Caveat', cursive; font-size: 19px; color: #d63031; margin-top: 6px; }
+    .polaroid-card img { width: 100%; height: 210px; object-fit: cover; border-radius: 8px; }
+    .polaroid-caption { font-family: 'Caveat', cursive; font-size: 20px; color: #d63031; margin-top: 8px; }
 
     /* Vinyl */
     .vinyl-wrapper {
-      width: 160px; height: 160px; background: radial-gradient(circle, #222 30%, #111 70%, #000 100%);
-      border-radius: 50%; border: 6px solid #333; display: flex; justify-content: center; align-items: center; margin: 10px 0;
+      width: 170px; height: 170px; background: radial-gradient(circle, #222 30%, #111 70%, #000 100%);
+      border-radius: 50%; border: 6px solid #333; display: flex; justify-content: center; align-items: center; margin: 15px 0;
     }
     .vinyl-wrapper.spinning { animation: spin 4s linear infinite; }
     @keyframes spin { 100% { transform: rotate(360deg); } }
 
-    /* Scroll Letter */
+    /* Letter Scroll */
     .scroll-letter {
-      background: linear-gradient(135deg, #fffdf9 0%, #fbe3e8 100%); padding: 22px 16px;
-      border-radius: 18px; color: #4a3e3d; text-align: left; line-height: 1.6; border: 2px solid #ffd1d8;
+      background: linear-gradient(135deg, #fffdf9 0%, #fbe3e8 100%); padding: 25px 18px;
+      border-radius: 20px; color: #4a3e3d; text-align: left; line-height: 1.7; border: 2px solid #ffd1d8;
     }
-    .scroll-letter h2 { font-family: 'Playfair Display', serif; color: #d63031; font-size: 24px; text-align: center; margin-bottom: 8px; }
+    .scroll-letter h2 { font-family: 'Playfair Display', serif; color: #d63031; font-size: 26px; text-align: center; margin-bottom: 10px; }
     .highlight-quote {
       background: rgba(214, 48, 49, 0.08); border-left: 4px solid #d63031;
-      padding: 8px; font-family: 'Caveat', cursive; font-size: 19px; color: #2d3436; margin: 8px 0;
+      padding: 10px; font-family: 'Caveat', cursive; font-size: 20px; color: #2d3436; margin: 10px 0;
     }
-    .from-sign { text-align: right; font-family: 'Caveat', cursive; font-size: 22px; color: #d63031; font-weight: bold; margin-top: 8px; }
+    .from-sign { text-align: right; font-family: 'Caveat', cursive; font-size: 24px; color: #d63031; font-weight: bold; margin-top: 10px; }
+
+    /* Rain Elements Effect */
+    .rain-item {
+      position: absolute;
+      top: -50px;
+      font-size: 30px;
+      animation: fallRain linear forwards;
+      z-index: 5;
+    }
+    @keyframes fallRain {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(105vh) rotate(360deg); opacity: 0; }
+    }
   </style>
 </head>
 <body>
 
   <canvas id="particles-canvas"></canvas>
 
-  <!-- STAGE 1 -->
+  <!-- STAGE 1: Gift Box -->
   <div id="stage-1" class="screen active">
     <div class="title-gold">Happy Birthday ZoYa ✨</div>
-    <div class="subtitle-light">Step 1: Tap Gift Box to start</div>
-    <div class="big-icon" onclick="openStage(2)">🎁</div>
+    <div class="subtitle-light">Step 1: Tap Gift Box for Star Rain! 🌟</div>
+    <div class="big-icon" onclick="triggerRain('🌟'); openStage(2);">🎁</div>
   </div>
 
-  <!-- STAGE 2 -->
+  <!-- STAGE 2: Golden Lock -->
   <div id="stage-2" class="screen">
     <div class="title-gold">Unlock Magic 🔓</div>
     <div class="subtitle-light">Step 2: Turn golden key</div>
-    <div class="big-icon" id="lockIcon" onclick="openLock()">🔒</div>
-    <button class="key-btn" onclick="openLock()">🔑 Turn Key</button>
+    <div class="big-icon" id="lockIcon" onclick="triggerRain('🔑'); openLock();">🔒</div>
+    <button class="key-btn" onclick="triggerRain('🔑'); openLock();">🔑 Turn Key</button>
   </div>
 
-  <!-- STAGE 3 -->
+  <!-- STAGE 3: Cake & Candles -->
   <div id="stage-3" class="screen">
     <div class="title-gold">Make A Wish 🎂</div>
-    <div class="subtitle-light">Step 3: Blow out all candles</div>
+    <div class="subtitle-light">Step 3: Blow out all 4 candles</div>
     <div class="cake-container">
       <div class="candles-list">
         <div class="candle-item" onclick="extinguishCandle(this)"><div class="flame-light"></div><div class="candle-stick"></div></div>
@@ -164,7 +177,7 @@
     </div>
   </div>
 
-  <!-- STAGE 4 -->
+  <!-- STAGE 4: Balloons -->
   <div id="stage-4" class="screen">
     <div class="title-gold">Pop Balloons 🎈</div>
     <div class="subtitle-light">Step 4: Tap balloons to pop</div>
@@ -176,128 +189,92 @@
     </div>
   </div>
 
-  <!-- STAGE 5 -->
+  <!-- STAGE 5: Crystal Ball -->
   <div id="stage-5" class="screen">
     <div class="title-gold">Crystal Wishes 🔮</div>
-    <div class="subtitle-light">Step 5: Tap crystal orb</div>
-    <div class="big-icon" onclick="revealCrystalWish()">🔮</div>
+    <div class="subtitle-light">Step 5: Tap crystal orb for magic rain</div>
+    <div class="big-icon" onclick="triggerRain('✨'); revealCrystalWish();">🔮</div>
     <div class="subtitle-light" id="crystalWishBox">Tap crystal ball...</div>
-    <button class="btn-global" id="crystalNextBtn" style="display:none;" onclick="openStage(6)">Next ➔</button>
+    <button class="btn-global" id="crystalNextBtn" style="display:none;" onclick="openStage(6)">Next Step ➔</button>
   </div>
 
-  <!-- STAGE 6 -->
+  <!-- STAGE 6: Photo 1 -->
   <div id="stage-6" class="screen">
-    <div class="title-gold">Precious Memories 📸</div>
-    <div class="subtitle-light">Step 6: Tap photo card</div>
-    <div class="polaroid-card" id="polaroidBox" onclick="nextPolaroid()">
-      <img id="polaroidImg" src="./1.jpg" alt="Memory">
-      <div class="polaroid-caption" id="polaroidCap">ZoYa's Smile ✨</div>
+    <div class="title-gold">Memory 1 of 5 📸</div>
+    <div class="subtitle-light">Step 6: Tap photo for heart rain</div>
+    <div class="polaroid-card" onclick="triggerRain('💖'); openStage(7);">
+      <img src="./1.jpg" alt="Memory 1">
+      <div class="polaroid-caption">ZoYa's Sweet Smile ✨</div>
     </div>
-    <button class="btn-global" style="margin-top:12px;" onclick="openStage(7)">Next ➔</button>
   </div>
 
-  <!-- STAGE 7 -->
+  <!-- STAGE 7: Photo 2 -->
   <div id="stage-7" class="screen">
-    <div class="title-gold">Flower Shower 🌹</div>
-    <div class="subtitle-light">Step 7: Tap rose for petals</div>
-    <div class="big-icon" onclick="showerRoses()">🌹</div>
-    <button class="btn-global" id="roseNextBtn" style="display:none;" onclick="openStage(8)">Next ➔</button>
+    <div class="title-gold">Memory 2 of 5 📸</div>
+    <div class="subtitle-light">Step 7: Tap photo</div>
+    <div class="polaroid-card" onclick="triggerRain('🌸'); openStage(8);">
+      <img src="./2.jpg" alt="Memory 2">
+      <div class="polaroid-caption">Precious Moments 🌸</div>
+    </div>
   </div>
 
-  <!-- STAGE 8 -->
+  <!-- STAGE 8: Photo 3 -->
   <div id="stage-8" class="screen">
-    <div class="title-gold">Shooting Star 🌠</div>
-    <div class="subtitle-light">Step 8: Tap star for luck</div>
-    <div class="big-icon" onclick="catchStar()">🌠</div>
-    <div id="starText" class="subtitle-light" style="opacity:0;">✨ Luck Unlocked! ✨</div>
-    <button class="btn-global" id="starNextBtn" style="display:none;" onclick="openStage(9)">Next ➔</button>
+    <div class="title-gold">Memory 3 of 5 📸</div>
+    <div class="subtitle-light">Step 8: Tap photo</div>
+    <div class="polaroid-card" onclick="triggerRain('💫'); openStage(9);">
+      <img src="./3.jpg" alt="Memory 3">
+      <div class="polaroid-caption">Wonderful Friend 💖</div>
+    </div>
   </div>
 
-  <!-- STAGE 9 -->
+  <!-- STAGE 9: Photo 4 -->
   <div id="stage-9" class="screen">
-    <div class="title-gold">Sweet Treat 🧁</div>
-    <div class="subtitle-light">Step 9: Tap cupcake</div>
-    <div class="big-icon" onclick="treatCupcake()">🧁</div>
-    <button class="btn-global" id="cupcakeNextBtn" style="display:none;" onclick="openStage(10)">Next ➔</button>
+    <div class="title-gold">Memory 4 of 5 📸</div>
+    <div class="subtitle-light">Step 9: Tap photo</div>
+    <div class="polaroid-card" onclick="triggerRain('🌟'); openStage(10);">
+      <img src="./4.jpg" alt="Memory 4">
+      <div class="polaroid-caption">Beautiful Times 🌟</div>
+    </div>
   </div>
 
-  <!-- STAGE 10 -->
+  <!-- STAGE 10: Photo 5 -->
   <div id="stage-10" class="screen">
-    <div class="title-gold">Secret Note ✉️</div>
-    <div class="subtitle-light">Step 10: Tap envelope</div>
-    <div class="big-icon" onclick="openEnvelope()">✉️</div>
-    <div id="envText" class="subtitle-light" style="opacity:0;">💌 "You are one in a million!"</div>
-    <button class="btn-global" id="envNextBtn" style="display:none;" onclick="openStage(11)">Next ➔</button>
+    <div class="title-gold">Memory 5 of 5 📸</div>
+    <div class="subtitle-light">Step 10: Tap photo</div>
+    <div class="polaroid-card" onclick="triggerRain('🎉'); openStage(11);">
+      <img src="./5.jpg" alt="Memory 5">
+      <div class="polaroid-caption">Forever Cherished ✨</div>
+    </div>
   </div>
 
-  <!-- STAGE 11 -->
+  <!-- STAGE 11: Rose Petals Rain -->
   <div id="stage-11" class="screen">
-    <div class="title-gold">Gramophone Melody 🎵</div>
-    <div class="subtitle-light">Step 11: Spin disc</div>
-    <div class="vinyl-wrapper" id="vinylDisc"><div style="font-size:20px;">🎶</div></div>
-    <button class="key-btn" onclick="playVinylMusic()">▶ Spin Music</button>
-    <button class="btn-global" onclick="openStage(12)">Next ➔</button>
+    <div class="title-gold">Rose Petals Shower 🌹</div>
+    <div class="subtitle-light">Step 11: Tap rose for flower rain</div>
+    <div class="big-icon" onclick="triggerRain('🌹'); showNextBtn('roseNextBtn');">🌹</div>
+    <button class="btn-global" id="roseNextBtn" style="display:none;" onclick="openStage(12)">Next Step ➔</button>
   </div>
 
-  <!-- STAGE 12 -->
+  <!-- STAGE 12: Sweet Cupcake Treat -->
   <div id="stage-12" class="screen">
-    <div class="title-gold">Sparkler Night 🎇</div>
-    <div class="subtitle-light">Step 12: Ignite sparkler</div>
-    <div class="big-icon" onclick="sparkFireworks()">🎇</div>
-    <button class="btn-global" id="sparkNextBtn" style="display:none;" onclick="openStage(13)">Next ➔</button>
+    <div class="title-gold">Sweet Treat 🧁</div>
+    <div class="subtitle-light">Step 12: Tap cupcake</div>
+    <div class="big-icon" onclick="triggerRain('🧁'); showNextBtn('cupcakeNextBtn');">🧁</div>
+    <button class="btn-global" id="cupcakeNextBtn" style="display:none;" onclick="openStage(13)">Next Step ➔</button>
   </div>
 
-  <!-- STAGE 13 -->
+  <!-- STAGE 13: Vinyl Music Player -->
   <div id="stage-13" class="screen">
-    <div class="title-gold">Crown Queen 👑</div>
-    <div class="subtitle-light">Step 13: Crown ZoYa</div>
-    <div class="big-icon" onclick="crownQueen()">👑</div>
-    <div id="crownText" class="subtitle-light" style="opacity:0;">👑 Birthday Queen! ✨</div>
-    <button class="btn-global" id="crownNextBtn" style="display:none;" onclick="openStage(14)">Next ➔</button>
+    <div class="title-gold">Birthday Melody 🎵</div>
+    <div class="subtitle-light">Step 13: Spin record & play tune</div>
+    <div class="vinyl-wrapper" id="vinylDisc" onclick="playBirthdayTune()"><div style="font-size:22px;">🎶</div></div>
+    <button class="key-btn" onclick="playBirthdayTune()">▶ Play Famous Tune</button>
+    <button class="btn-global" style="margin-top:10px;" onclick="openStage(14)">Read Letter 💌</button>
   </div>
 
-  <!-- STAGE 14 -->
+  <!-- STAGE 14: Grand Letter Scroll -->
   <div id="stage-14" class="screen">
-    <div class="title-gold">Chocolate Treat 🍫</div>
-    <div class="subtitle-light">Step 14: Open chocolate box</div>
-    <div class="big-icon" onclick="openChoco()">🍫</div>
-    <button class="btn-global" id="chocoNextBtn" style="display:none;" onclick="openStage(15)">Next ➔</button>
-  </div>
-
-  <!-- STAGE 15 -->
-  <div id="stage-15" class="screen">
-    <div class="title-gold">Magic Butterflies 🦋</div>
-    <div class="subtitle-light">Step 15: Release butterflies</div>
-    <div class="big-icon" onclick="releaseButterflies()">🦋</div>
-    <button class="btn-global" id="bfNextBtn" style="display:none;" onclick="openStage(16)">Next ➔</button>
-  </div>
-
-  <!-- STAGE 16 -->
-  <div id="stage-16" class="screen">
-    <div class="title-gold">Magic Wand 🪄</div>
-    <div class="subtitle-light">Step 16: Wave wand</div>
-    <div class="big-icon" onclick="waveWand()">🪄</div>
-    <button class="btn-global" id="wandNextBtn" style="display:none;" onclick="openStage(17)">Next ➔</button>
-  </div>
-
-  <!-- STAGE 17 -->
-  <div id="stage-17" class="screen">
-    <div class="title-gold">Heart Balloon 💖</div>
-    <div class="subtitle-light">Step 17: Send heart up</div>
-    <div class="big-icon" onclick="sendHeart()">💖</div>
-    <button class="btn-global" id="heartNextBtn" style="display:none;" onclick="openStage(18)">Next ➔</button>
-  </div>
-
-  <!-- STAGE 18 -->
-  <div id="stage-18" class="screen">
-    <div class="title-gold">Special Trophy 🏆</div>
-    <div class="subtitle-light">Step 18: Claim best friend trophy</div>
-    <div class="big-icon" onclick="claimTrophy()">🏆</div>
-    <button class="btn-global" id="trophyNextBtn" style="display:none;" onclick="openStage(19)">Read Letter 💌</button>
-  </div>
-
-  <!-- STAGE 19: Grand Scroll Letter -->
-  <div id="stage-19" class="screen">
     <div class="scroll-letter">
       <h2>Dear ZoYa ✨</h2>
       <p>Aapke is khas birthday par Amir ki taraf se dil se ek baat...</p>
@@ -307,20 +284,55 @@
       <p>Aapki dosti sach me bohot anmol hai. Main dua karta hu ki aapki zindagi hamesha khushiyon aur kamyabi se bhari rahe!</p>
       <div class="from-sign">From: Amir 💖</div>
     </div>
-    <button class="key-btn" style="margin-top:12px;" onclick="openStage(20)">Final Voice Wish 🎤</button>
+    <button class="key-btn" style="margin-top:12px;" onclick="openStage(15)">Final Voice Wish 🎤</button>
   </div>
 
-  <!-- STAGE 20: Final Voice Wish -->
-  <div id="stage-20" class="screen">
+  <!-- STAGE 15: Final Voice Wish & Celebration Rain -->
+  <div id="stage-15" class="screen">
     <div class="title-gold">Special Voice Wish 🎤</div>
-    <div class="subtitle-light">Listening to Amir's Birthday Voice Wish...</div>
-    <div class="big-icon" onclick="speakWish()">💖</div>
-    <button class="btn-global" style="background:#2ecc71;" onclick="speakWish()">🔊 Play Voice Wish</button>
-    <button class="btn-global" style="background:#e74c3c;" onclick="openStage(1)">↺ Replay All 20 Steps</button>
+    <div class="subtitle-light">Amir's Special Message for ZoYa</div>
+    <div class="big-icon" onclick="triggerRain('💖'); speakWish();">💖</div>
+    <button class="btn-global" style="background:#2ecc71;" onclick="triggerRain('💖'); speakWish();">🔊 Play Voice Wish</button>
+    <button class="btn-global" style="background:#e74c3c;" onclick="openStage(1)">↺ Replay All 15 Steps</button>
   </div>
 
   <script>
+    // Audio Context for musical note taps
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+    function playNote(freq, type = 'sine', duration = 0.15) {
+      try {
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+      } catch(e) {}
+    }
+
+    // Rain effect generator
+    function triggerRain(emoji) {
+      playNote(523.25); // C5 note
+      for (let i = 0; i < 20; i++) {
+        let el = document.createElement('div');
+        el.className = 'rain-item';
+        el.innerText = emoji;
+        el.style.left = Math.random() * 100 + 'vw';
+        el.style.animationDuration = (Math.random() * 1.5 + 1) + 's';
+        el.style.fontSize = (Math.random() * 20 + 20) + 'px';
+        document.body.appendChild(el);
+        setTimeout(() => { el.remove(); }, 2500);
+      }
+    }
+
     function openStage(num) {
+      playNote(659.25); // E5 note
       var screens = document.querySelectorAll('.screen');
       for (var i = 0; i < screens.length; i++) {
         screens[i].classList.remove('active');
@@ -329,25 +341,28 @@
       if (target) {
         target.classList.add('active');
       }
-      if (num === 20) {
-        setTimeout(speakWish, 600);
+      if (num === 15) {
+        setTimeout(speakWish, 800);
       }
     }
 
     function openLock() {
+      playNote(440);
       var lock = document.getElementById('lockIcon');
       if (lock) lock.innerText = '🔓';
-      setTimeout(function() { openStage(3); }, 700);
+      setTimeout(function() { openStage(3); }, 800);
     }
 
     var candlesOut = 0;
     function extinguishCandle(el) {
       var flame = el.querySelector('.flame-light');
       if (flame && !flame.classList.contains('off')) {
+        playNote(587.33); // D5
         flame.classList.add('off');
         candlesOut++;
         if (candlesOut === 4) {
-          setTimeout(function() { openStage(4); }, 800);
+          triggerRain('🎂');
+          setTimeout(function() { openStage(4); }, 1000);
         }
       }
     }
@@ -355,66 +370,54 @@
     var poppedCount = 0;
     function popBalloon(el) {
       if (!el.classList.contains('popped')) {
+        playNote(698.46); // F5
         el.classList.add('popped');
         poppedCount++;
         if (poppedCount === 4) {
-          setTimeout(function() { openStage(5); }, 700);
+          triggerRain('🎈');
+          setTimeout(function() { openStage(5); }, 900);
         }
       }
     }
 
     function revealCrystalWish() {
+      playNote(783.99); // G5
       document.getElementById('crystalWishBox').innerText = "✨ May life bless ZoYa with endless joy & positivity!";
       document.getElementById('crystalNextBtn').style.display = 'inline-block';
     }
 
-    var photos = [
-      { src: "./1.jpg", cap: "ZoYa's Most Charming Smile ✨" },
-      { src: "./2.jpg", cap: "Precious & Unforgettable Memories 🌸" },
-      { src: "./3.jpg", cap: "A Truly Special & Wonderful Friend 💖" },
-      { src: "./4.jpg", cap: "Beautiful Moments Together 🌟" },
-      { src: "./5.jpg", cap: "Forever Cherished Moments ✨" }
-    ];
-    var photoIdx = 0;
-    function nextPolaroid() {
-      photoIdx = (photoIdx + 1) % photos.length;
-      document.getElementById('polaroidImg').src = photos[photoIdx].src;
-      document.getElementById('polaroidCap').innerText = photos[photoIdx].cap;
+    function showNextBtn(id) {
+      document.getElementById(id).style.display = 'inline-block';
     }
 
-    function showerRoses() { document.getElementById('roseNextBtn').style.display = 'inline-block'; }
-    function catchStar() { document.getElementById('starText').style.opacity = '1'; document.getElementById('starNextBtn').style.display = 'inline-block'; }
-    function treatCupcake() { document.getElementById('cupcakeNextBtn').style.display = 'inline-block'; }
-    function openEnvelope() { document.getElementById('envText').style.opacity = '1'; document.getElementById('envNextBtn').style.display = 'inline-block'; }
-    function playVinylMusic() { document.getElementById('vinylDisc').classList.add('spinning'); }
-    function sparkFireworks() { document.getElementById('sparkNextBtn').style.display = 'inline-block'; }
-    function crownQueen() { document.getElementById('crownText').style.opacity = '1'; document.getElementById('crownNextBtn').style.display = 'inline-block'; }
-    function openChoco() { document.getElementById('chocoNextBtn').style.display = 'inline-block'; }
-    function releaseButterflies() { document.getElementById('bfNextBtn').style.display = 'inline-block'; }
-    function waveWand() { document.getElementById('wandNextBtn').style.display = 'inline-block'; }
-    function sendHeart() { document.getElementById('heartNextBtn').style.display = 'inline-block'; }
-    function claimTrophy() { document.getElementById('trophyNextBtn').style.display = 'inline-block'; }
+    function playBirthdayTune() {
+      playNote(523.25, 'triangle', 0.4);
+      setTimeout(() => playNote(523.25, 'triangle', 0.4), 400);
+      setTimeout(() => playNote(587.33, 'triangle', 0.8), 800);
+      setTimeout(() => playNote(523.25, 'triangle', 0.8), 1600);
+      setTimeout(() => playNote(698.46, 'triangle', 0.8), 2400);
+      setTimeout(() => playNote(659.25, 'triangle', 1.2), 3200);
+      
+      var disc = document.getElementById('vinylDisc');
+      if(disc) disc.classList.add('spinning');
+      triggerRain('🎵');
+    }
 
+    // Corrected & Cleaned Voice Wish as requested
     function speakWish() {
       if ('speechSynthesis' in window) {
         window.speechSynthesis.cancel();
-        var textParts = [
-          "Happy Birthday ZoYa...",
-          "Happy Birthday to you...",
-          "ZoYa, aapko yeh sab pasand aaya na?",
-          "Agar aaya, toh apna response Amir ko message se zaroor batana!",
-          "Thank you, aur aapka din bahut accha guzre!"
-        ];
-        textParts.forEach(function(part, index) {
-          setTimeout(function() {
-            var speech = new SpeechSynthesisUtterance(part);
-            speech.lang = 'hi-IN'; speech.rate = 0.78; speech.pitch = 1.2;
-            window.speechSynthesis.speak(speech);
-          }, index * 2600);
-        });
+        var wishText = "Happy Birthday to you Zoya! Amir ki taraf se aapko janamdin ki bohot bohot mubarakbaad. Aapka din bahut accha guzre, aur aapko zindagi ki saari khushiyan milein. Aap bahut pyaari hain, aur hamesha aise hi muskuraati rahein!";
+        var speech = new SpeechSynthesisUtterance(wishText);
+        speech.lang = 'hi-IN';
+        speech.rate = 0.8;
+        speech.pitch = 1.2;
+        window.speechSynthesis.speak(speech);
+        triggerRain('💖');
       }
     }
 
+    // Background floating particles
     var canvas = document.getElementById('particles-canvas');
     if (canvas && canvas.getContext) {
       var ctx = canvas.getContext('2d');
@@ -424,16 +427,15 @@
       resizeCanvas();
       function Particle() {
         this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 3 + 1; this.speedX = Math.random() * 1 - 0.5; this.speedY = Math.random() * -1 - 0.5;
+        this.size = Math.random() * 3 + 1; this.speedX = Math.random() * 0.6 - 0.3; this.speedY = Math.random() * -0.6 - 0.3;
         this.color = 'hsl(' + (Math.random() * 60 + 300) + ', 100%, 75%)';
       }
       Particle.prototype.update = function() { this.x += this.speedX; this.y += this.speedY; if (this.y < 0) this.y = canvas.height; };
       Particle.prototype.draw = function() { ctx.fillStyle = this.color; ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill(); };
-      for (var i = 0; i < 50; i++) particles.push(new Particle());
+      for (var i = 0; i < 40; i++) particles.push(new Particle());
       function animateParticles() { ctx.clearRect(0, 0, canvas.width, canvas.height); particles.forEach(function(p) { p.update(); p.draw(); }); requestAnimationFrame(animateParticles); }
       animateParticles();
     }
   </script>
 </body>
 </html>
-
