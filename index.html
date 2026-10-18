@@ -360,13 +360,14 @@
       osc.start(); osc.stop(audioCtx.currentTime + 0.12);
     }
 
+    // Slow, melodious & sweet voice wish with custom message for Amir
     function speakWish() {
       if ('speechSynthesis' in window) {
         window.speechSynthesis.cancel();
-        const wishText = "Happy Birthday ZoYa! Amir ki taraf se aapko janamdin ki bohot bohot mubarakbaad. Aap hamesha aise hi muskuraati rahein aur aapki zindagi khushiyon se bhari rahe!";
+        const wishText = "Happy Birthday ZoYa... Happy Birthday to you... ZoYa, aapko yeh sab pasand aaya na? Agar aaya, toh apna response Amir ko message se zaroor batana! Thank you, aur aapka din bahut accha guzre!";
         const speech = new SpeechSynthesisUtterance(wishText);
         speech.lang = 'hi-IN';
-        speech.rate = 0.9;
+        speech.rate = 0.8; // Slow speed like a song
         speech.pitch = 1.1;
         window.speechSynthesis.speak(speech);
       }
@@ -470,7 +471,9 @@
     const photos = [
       { src: "./1.jpg", cap: "ZoYa's Most Charming Smile ✨" },
       { src: "./2.jpg", cap: "Precious & Unforgettable Memories 🌸" },
-      { src: "./3.jpg", cap: "A Truly Special & Wonderful Friend 💖" }
+      { src: "./3.jpg", cap: "A Truly Special & Wonderful Friend 💖" },
+      { src: "./4.jpg", cap: "Beautiful Moments Together 🌟" },
+      { src: "./5.jpg", cap: "Forever Cherished Moments ✨" }
     ];
     let photoIdx = 0;
     function nextPolaroid() {
