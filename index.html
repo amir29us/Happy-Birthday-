@@ -26,7 +26,7 @@
       display: none;
       width: 100%;
       max-width: 440px;
-      padding: 25px 20px;
+      padding: 20px 15px;
       text-align: center;
       min-height: 100vh;
       flex-direction: column;
@@ -118,13 +118,26 @@
       100% { bottom: 270px; transform: translateX(-15px); }
     }
 
-    /* Polaroid Photos */
+    /* Full HD Large Polaroid Card */
     .polaroid-card {
-      background: #fff; padding: 10px 10px 25px 10px; border-radius: 12px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.4); width: 240px; color: #2d3436; margin: 0 auto; cursor: pointer;
+      background: #fff;
+      padding: 12px 12px 28px 12px;
+      border-radius: 14px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      width: 310px;
+      color: #2d3436;
+      margin: 0 auto;
+      cursor: pointer;
+      transition: transform 0.3s ease;
     }
-    .polaroid-card img { width: 100%; height: 210px; object-fit: cover; border-radius: 8px; }
-    .polaroid-caption { font-family: 'Caveat', cursive; font-size: 20px; color: #d63031; margin-top: 8px; }
+    .polaroid-card:active { transform: scale(0.98); }
+    .polaroid-card img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    .polaroid-caption { font-family: 'Caveat', cursive; font-size: 22px; color: #d63031; margin-top: 10px; }
 
     /* Vinyl Gramophone */
     .vinyl-wrapper {
@@ -159,17 +172,17 @@
       100% { transform: translateY(105vh) rotate(180deg); opacity: 0; }
     }
 
-    /* Rocket Crackers Animation */
+    /* Rocket Rocket Launch */
     .rocket-firework {
       position: absolute;
       bottom: 20px;
-      font-size: 40px;
+      font-size: 45px;
       animation: launchRocket 1.2s ease-out forwards;
     }
     @keyframes launchRocket {
       0% { bottom: 20px; transform: scale(1); opacity: 1; }
-      70% { bottom: 75vh; transform: scale(0.6); opacity: 1; }
-      100% { bottom: 80vh; transform: scale(2.5); opacity: 0; }
+      70% { bottom: 75vh; transform: scale(0.7); opacity: 1; }
+      100% { bottom: 80vh; transform: scale(2.8); opacity: 0; }
     }
   </style>
 </head>
@@ -212,10 +225,10 @@
     <div class="title-gold">Pop Flying Balloons 🎈</div>
     <div class="subtitle-light">Step 4: Tap floating balloons to pop!</div>
     <div class="balloons-area">
-      <div class="balloon-item" style="left:15%; animation-delay: 0s;" onclick="popBalloonReal(this)">🎈</div>
-      <div class="balloon-item" style="left:38%; animation-delay: 1.2s;" onclick="popBalloonReal(this)">🎈</div>
-      <div class="balloon-item" style="left:60%; animation-delay: 0.6s;" onclick="popBalloonReal(this)">🎈</div>
-      <div class="balloon-item" style="left:80%; animation-delay: 1.8s;" onclick="popBalloonReal(this)">🎈</div>
+      <div class="balloon-item" style="left:12%; animation-delay: 0s;" onclick="popBalloonReal(this)">🎈</div>
+      <div class="balloon-item" style="left:35%; animation-delay: 1.2s;" onclick="popBalloonReal(this)">🎈</div>
+      <div class="balloon-item" style="left:58%; animation-delay: 0.6s;" onclick="popBalloonReal(this)">🎈</div>
+      <div class="balloon-item" style="left:78%; animation-delay: 1.8s;" onclick="popBalloonReal(this)">🎈</div>
     </div>
   </div>
 
@@ -231,7 +244,7 @@
   <!-- STAGE 6: Photo 1 -->
   <div id="stage-6" class="screen">
     <div class="title-gold">Memory 1 of 5 📸</div>
-    <div class="subtitle-light">Step 6: Tap photo card</div>
+    <div class="subtitle-light">Step 6: Tap photo to continue</div>
     <div class="polaroid-card" onclick="triggerSlowRain('💖'); openStage(7);">
       <img src="./1.jpg" alt="Memory 1">
       <div class="polaroid-caption">ZoYa's Sweet Smile ✨</div>
@@ -241,7 +254,7 @@
   <!-- STAGE 7: Photo 2 -->
   <div id="stage-7" class="screen">
     <div class="title-gold">Memory 2 of 5 📸</div>
-    <div class="subtitle-light">Step 7: Tap photo card</div>
+    <div class="subtitle-light">Step 7: Tap photo to continue</div>
     <div class="polaroid-card" onclick="triggerSlowRain('🌸'); openStage(8);">
       <img src="./2.jpg" alt="Memory 2">
       <div class="polaroid-caption">Precious Memories 🌸</div>
@@ -251,7 +264,7 @@
   <!-- STAGE 8: Photo 3 -->
   <div id="stage-8" class="screen">
     <div class="title-gold">Memory 3 of 5 📸</div>
-    <div class="subtitle-light">Step 8: Tap photo card</div>
+    <div class="subtitle-light">Step 8: Tap photo to continue</div>
     <div class="polaroid-card" onclick="triggerSlowRain('💫'); openStage(9);">
       <img src="./3.jpg" alt="Memory 3">
       <div class="polaroid-caption">Wonderful Friend 💖</div>
@@ -261,7 +274,7 @@
   <!-- STAGE 9: Photo 4 -->
   <div id="stage-9" class="screen">
     <div class="title-gold">Memory 4 of 5 📸</div>
-    <div class="subtitle-light">Step 9: Tap photo card</div>
+    <div class="subtitle-light">Step 9: Tap photo to continue</div>
     <div class="polaroid-card" onclick="triggerSlowRain('🌟'); openStage(10);">
       <img src="./4.jpg" alt="Memory 4">
       <div class="polaroid-caption">Beautiful Times 🌟</div>
@@ -271,7 +284,7 @@
   <!-- STAGE 10: Photo 5 -->
   <div id="stage-10" class="screen">
     <div class="title-gold">Memory 5 of 5 📸</div>
-    <div class="subtitle-light">Step 10: Tap photo card</div>
+    <div class="subtitle-light">Step 10: Tap photo to continue</div>
     <div class="polaroid-card" onclick="triggerSlowRain('🎉'); openStage(11);">
       <img src="./5.jpg" alt="Memory 5">
       <div class="polaroid-caption">Forever Cherished ✨</div>
@@ -281,7 +294,7 @@
   <!-- STAGE 11: Real Firecrackers / Patakha Stage -->
   <div id="stage-11" class="screen">
     <div class="title-gold">Grand Patakha Show 🎆</div>
-    <div class="subtitle-light">Step 11: Tap cracker to launch rockets into sky!</div>
+    <div class="subtitle-light">Step 11: Tap rocket to launch fireworks!</div>
     <div class="big-icon" onclick="launchFireworks()">🚀</div>
     <button class="btn-global" id="firecrackerNextBtn" style="display:none;" onclick="openStage(12)">Next Step ➔</button>
   </div>
@@ -329,7 +342,6 @@
   <script>
     const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
-    // Soft melody tone generator
     function playMelodyTone(freq, duration = 0.2) {
       try {
         if (audioCtx.state === 'suspended') audioCtx.resume();
@@ -346,39 +358,57 @@
       } catch(e) {}
     }
 
-    // Real Pop sound effect for balloons
+    // Balloon Pop Sound
     function playRealBalloonPopSound() {
       try {
         if (audioCtx.state === 'suspended') audioCtx.resume();
         const osc = audioCtx.createOscillator();
         const gain = audioCtx.createGain();
         osc.type = 'square';
-        osc.frequency.setValueAtTime(120, audioCtx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(30, audioCtx.currentTime + 0.1);
-        gain.gain.setValueAtTime(0.8, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
+        osc.frequency.setValueAtTime(140, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(25, audioCtx.currentTime + 0.12);
+        gain.gain.setValueAtTime(0.9, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.12);
         osc.connect(gain);
         gain.connect(audioCtx.destination);
         osc.start();
-        osc.stop(audioCtx.currentTime + 0.1);
+        osc.stop(audioCtx.currentTime + 0.12);
       } catch(e) {}
     }
 
-    // Firecracker Boom Explosion Sound
-    function playFirecrackerBoomSound() {
+    // Rocket Whistle Sound (Ascending pitch)
+    function playRocketWhistleSound() {
+      try {
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(400, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(1600, audioCtx.currentTime + 1.0);
+        gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 1.0);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 1.0);
+      } catch(e) {}
+    }
+
+    // Heavy Loud Firecracker Explosion Sound
+    function playLoudBoomSound() {
       try {
         if (audioCtx.state === 'suspended') audioCtx.resume();
         const osc = audioCtx.createOscillator();
         const gain = audioCtx.createGain();
         osc.type = 'sawtooth';
-        osc.frequency.setValueAtTime(220, audioCtx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(40, audioCtx.currentTime + 0.3);
-        gain.gain.setValueAtTime(0.9, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
+        osc.frequency.setValueAtTime(180, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(30, audioCtx.currentTime + 0.4);
+        gain.gain.setValueAtTime(1.0, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.4);
         osc.connect(gain);
         gain.connect(audioCtx.destination);
         osc.start();
-        osc.stop(audioCtx.currentTime + 0.3);
+        osc.stop(audioCtx.currentTime + 0.4);
       } catch(e) {}
     }
 
@@ -390,7 +420,7 @@
         el.className = 'rain-item';
         el.innerText = emoji;
         el.style.left = Math.random() * 95 + 'vw';
-        el.style.animationDuration = (Math.random() * 2 + 2.5) + 's'; // Slow smooth fall
+        el.style.animationDuration = (Math.random() * 2 + 2.5) + 's';
         el.style.fontSize = (Math.random() * 15 + 22) + 'px';
         document.body.appendChild(el);
         setTimeout(() => { el.remove(); }, 4500);
@@ -432,7 +462,6 @@
       }
     }
 
-    // Real Flying Balloon Pop Logic
     var balloonsPopped = 0;
     function popBalloonReal(el) {
       if (el.style.display !== 'none') {
@@ -459,27 +488,28 @@
       document.getElementById(id).style.display = 'inline-block';
     }
 
-    // Rocket Firecracker Show
+    // Sequential Loud Firecracker Launch
     function launchFireworks() {
-      for (let i = 0; i < 5; i++) {
+      for (let i = 0; i < 4; i++) {
         setTimeout(function() {
+          playRocketWhistleSound();
           var rocket = document.createElement('div');
           rocket.className = 'rocket-firework';
           rocket.innerText = '🚀';
-          rocket.style.left = (Math.random() * 70 + 15) + '%';
+          rocket.style.left = (20 + i * 20) + '%';
           document.body.appendChild(rocket);
 
           setTimeout(function() {
-            playFirecrackerBoomSound();
+            playLoudBoomSound();
             rocket.innerText = '🎆';
             triggerSlowRain('✨');
-            setTimeout(function() { rocket.remove(); }, 400);
+            setTimeout(function() { rocket.remove(); }, 500);
           }, 1000);
-        }, i * 500);
+        }, i * 800);
       }
       setTimeout(function() {
         document.getElementById('firecrackerNextBtn').style.display = 'inline-block';
-      }, 3200);
+      }, 4200);
     }
 
     function playBirthdayTune() {
@@ -495,7 +525,6 @@
       triggerSlowRain('🎵');
     }
 
-    // Clear Voice Wish
     function speakWish() {
       if ('speechSynthesis' in window) {
         window.speechSynthesis.cancel();
@@ -509,7 +538,6 @@
       }
     }
 
-    // Background Canvas Stars
     var canvas = document.getElementById('particles-canvas');
     if (canvas && canvas.getContext) {
       var ctx = canvas.getContext('2d');
