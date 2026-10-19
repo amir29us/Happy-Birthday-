@@ -96,10 +96,27 @@
     .cake-layer-mid { width: 170px; height: 48px; background: #ffeaa7; border-radius: 6px; margin: 0 auto; }
     .cake-layer-base { width: 220px; height: 55px; background: #6c5ce7; border-radius: 0 0 10px 10px; margin: 0 auto; }
 
-    /* Balloons */
-    .balloons-grid { display: flex; justify-content: center; gap: 18px; margin: 15px 0; }
-    .balloon-item { font-size: 50px; cursor: pointer; }
-    .balloon-item.popped { visibility: hidden; opacity: 0; }
+    /* Flying Balloons Animation */
+    .balloons-area {
+      position: relative;
+      width: 100%;
+      height: 250px;
+      overflow: hidden;
+      margin: 10px 0;
+    }
+    .balloon-item {
+      position: absolute;
+      bottom: -60px;
+      font-size: 55px;
+      cursor: pointer;
+      animation: floatUp 4s infinite linear;
+      transition: transform 0.1s;
+    }
+    @keyframes floatUp {
+      0% { bottom: -60px; transform: translateX(0); }
+      50% { transform: translateX(15px); }
+      100% { bottom: 270px; transform: translateX(-15px); }
+    }
 
     /* Polaroid Photos */
     .polaroid-card {
@@ -109,7 +126,7 @@
     .polaroid-card img { width: 100%; height: 210px; object-fit: cover; border-radius: 8px; }
     .polaroid-caption { font-family: 'Caveat', cursive; font-size: 20px; color: #d63031; margin-top: 8px; }
 
-    /* Vinyl */
+    /* Vinyl Gramophone */
     .vinyl-wrapper {
       width: 170px; height: 170px; background: radial-gradient(circle, #222 30%, #111 70%, #000 100%);
       border-radius: 50%; border: 6px solid #333; display: flex; justify-content: center; align-items: center; margin: 15px 0;
@@ -129,17 +146,30 @@
     }
     .from-sign { text-align: right; font-family: 'Caveat', cursive; font-size: 24px; color: #d63031; font-weight: bold; margin-top: 10px; }
 
-    /* Rain Elements Effect */
+    /* Slow Premium Rain */
     .rain-item {
       position: absolute;
       top: -50px;
-      font-size: 30px;
-      animation: fallRain linear forwards;
+      font-size: 28px;
+      animation: fallRainSlow linear forwards;
       z-index: 5;
     }
-    @keyframes fallRain {
+    @keyframes fallRainSlow {
       0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-      100% { transform: translateY(105vh) rotate(360deg); opacity: 0; }
+      100% { transform: translateY(105vh) rotate(180deg); opacity: 0; }
+    }
+
+    /* Rocket Crackers Animation */
+    .rocket-firework {
+      position: absolute;
+      bottom: 20px;
+      font-size: 40px;
+      animation: launchRocket 1.2s ease-out forwards;
+    }
+    @keyframes launchRocket {
+      0% { bottom: 20px; transform: scale(1); opacity: 1; }
+      70% { bottom: 75vh; transform: scale(0.6); opacity: 1; }
+      100% { bottom: 80vh; transform: scale(2.5); opacity: 0; }
     }
   </style>
 </head>
@@ -150,16 +180,16 @@
   <!-- STAGE 1: Gift Box -->
   <div id="stage-1" class="screen active">
     <div class="title-gold">Happy Birthday ZoYa ✨</div>
-    <div class="subtitle-light">Step 1: Tap Gift Box for Star Rain! 🌟</div>
-    <div class="big-icon" onclick="triggerRain('🌟'); openStage(2);">🎁</div>
+    <div class="subtitle-light">Step 1: Tap Gift Box to Start 🎁</div>
+    <div class="big-icon" onclick="triggerSlowRain('🌟'); openStage(2);">🎁</div>
   </div>
 
   <!-- STAGE 2: Golden Lock -->
   <div id="stage-2" class="screen">
     <div class="title-gold">Unlock Magic 🔓</div>
     <div class="subtitle-light">Step 2: Turn golden key</div>
-    <div class="big-icon" id="lockIcon" onclick="triggerRain('🔑'); openLock();">🔒</div>
-    <button class="key-btn" onclick="triggerRain('🔑'); openLock();">🔑 Turn Key</button>
+    <div class="big-icon" id="lockIcon" onclick="openLock();">🔒</div>
+    <button class="key-btn" onclick="openLock();">🔑 Turn Key</button>
   </div>
 
   <!-- STAGE 3: Cake & Candles -->
@@ -177,23 +207,23 @@
     </div>
   </div>
 
-  <!-- STAGE 4: Balloons -->
+  <!-- STAGE 4: Flying Balloons Pop Challenge -->
   <div id="stage-4" class="screen">
-    <div class="title-gold">Pop Balloons 🎈</div>
-    <div class="subtitle-light">Step 4: Tap balloons to pop</div>
-    <div class="balloons-grid">
-      <div class="balloon-item" onclick="popBalloon(this)">🎈</div>
-      <div class="balloon-item" onclick="popBalloon(this)">🎈</div>
-      <div class="balloon-item" onclick="popBalloon(this)">🎈</div>
-      <div class="balloon-item" onclick="popBalloon(this)">🎈</div>
+    <div class="title-gold">Pop Flying Balloons 🎈</div>
+    <div class="subtitle-light">Step 4: Tap floating balloons to pop!</div>
+    <div class="balloons-area">
+      <div class="balloon-item" style="left:15%; animation-delay: 0s;" onclick="popBalloonReal(this)">🎈</div>
+      <div class="balloon-item" style="left:38%; animation-delay: 1.2s;" onclick="popBalloonReal(this)">🎈</div>
+      <div class="balloon-item" style="left:60%; animation-delay: 0.6s;" onclick="popBalloonReal(this)">🎈</div>
+      <div class="balloon-item" style="left:80%; animation-delay: 1.8s;" onclick="popBalloonReal(this)">🎈</div>
     </div>
   </div>
 
   <!-- STAGE 5: Crystal Ball -->
   <div id="stage-5" class="screen">
     <div class="title-gold">Crystal Wishes 🔮</div>
-    <div class="subtitle-light">Step 5: Tap crystal orb for magic rain</div>
-    <div class="big-icon" onclick="triggerRain('✨'); revealCrystalWish();">🔮</div>
+    <div class="subtitle-light">Step 5: Tap crystal orb for magic</div>
+    <div class="big-icon" onclick="triggerSlowRain('✨'); revealCrystalWish();">🔮</div>
     <div class="subtitle-light" id="crystalWishBox">Tap crystal ball...</div>
     <button class="btn-global" id="crystalNextBtn" style="display:none;" onclick="openStage(6)">Next Step ➔</button>
   </div>
@@ -201,8 +231,8 @@
   <!-- STAGE 6: Photo 1 -->
   <div id="stage-6" class="screen">
     <div class="title-gold">Memory 1 of 5 📸</div>
-    <div class="subtitle-light">Step 6: Tap photo for heart rain</div>
-    <div class="polaroid-card" onclick="triggerRain('💖'); openStage(7);">
+    <div class="subtitle-light">Step 6: Tap photo card</div>
+    <div class="polaroid-card" onclick="triggerSlowRain('💖'); openStage(7);">
       <img src="./1.jpg" alt="Memory 1">
       <div class="polaroid-caption">ZoYa's Sweet Smile ✨</div>
     </div>
@@ -211,18 +241,18 @@
   <!-- STAGE 7: Photo 2 -->
   <div id="stage-7" class="screen">
     <div class="title-gold">Memory 2 of 5 📸</div>
-    <div class="subtitle-light">Step 7: Tap photo</div>
-    <div class="polaroid-card" onclick="triggerRain('🌸'); openStage(8);">
+    <div class="subtitle-light">Step 7: Tap photo card</div>
+    <div class="polaroid-card" onclick="triggerSlowRain('🌸'); openStage(8);">
       <img src="./2.jpg" alt="Memory 2">
-      <div class="polaroid-caption">Precious Moments 🌸</div>
+      <div class="polaroid-caption">Precious Memories 🌸</div>
     </div>
   </div>
 
   <!-- STAGE 8: Photo 3 -->
   <div id="stage-8" class="screen">
     <div class="title-gold">Memory 3 of 5 📸</div>
-    <div class="subtitle-light">Step 8: Tap photo</div>
-    <div class="polaroid-card" onclick="triggerRain('💫'); openStage(9);">
+    <div class="subtitle-light">Step 8: Tap photo card</div>
+    <div class="polaroid-card" onclick="triggerSlowRain('💫'); openStage(9);">
       <img src="./3.jpg" alt="Memory 3">
       <div class="polaroid-caption">Wonderful Friend 💖</div>
     </div>
@@ -231,8 +261,8 @@
   <!-- STAGE 9: Photo 4 -->
   <div id="stage-9" class="screen">
     <div class="title-gold">Memory 4 of 5 📸</div>
-    <div class="subtitle-light">Step 9: Tap photo</div>
-    <div class="polaroid-card" onclick="triggerRain('🌟'); openStage(10);">
+    <div class="subtitle-light">Step 9: Tap photo card</div>
+    <div class="polaroid-card" onclick="triggerSlowRain('🌟'); openStage(10);">
       <img src="./4.jpg" alt="Memory 4">
       <div class="polaroid-caption">Beautiful Times 🌟</div>
     </div>
@@ -241,30 +271,30 @@
   <!-- STAGE 10: Photo 5 -->
   <div id="stage-10" class="screen">
     <div class="title-gold">Memory 5 of 5 📸</div>
-    <div class="subtitle-light">Step 10: Tap photo</div>
-    <div class="polaroid-card" onclick="triggerRain('🎉'); openStage(11);">
+    <div class="subtitle-light">Step 10: Tap photo card</div>
+    <div class="polaroid-card" onclick="triggerSlowRain('🎉'); openStage(11);">
       <img src="./5.jpg" alt="Memory 5">
       <div class="polaroid-caption">Forever Cherished ✨</div>
     </div>
   </div>
 
-  <!-- STAGE 11: Rose Petals Rain -->
+  <!-- STAGE 11: Real Firecrackers / Patakha Stage -->
   <div id="stage-11" class="screen">
-    <div class="title-gold">Rose Petals Shower 🌹</div>
-    <div class="subtitle-light">Step 11: Tap rose for flower rain</div>
-    <div class="big-icon" onclick="triggerRain('🌹'); showNextBtn('roseNextBtn');">🌹</div>
-    <button class="btn-global" id="roseNextBtn" style="display:none;" onclick="openStage(12)">Next Step ➔</button>
+    <div class="title-gold">Grand Patakha Show 🎆</div>
+    <div class="subtitle-light">Step 11: Tap cracker to launch rockets into sky!</div>
+    <div class="big-icon" onclick="launchFireworks()">🚀</div>
+    <button class="btn-global" id="firecrackerNextBtn" style="display:none;" onclick="openStage(12)">Next Step ➔</button>
   </div>
 
-  <!-- STAGE 12: Sweet Cupcake Treat -->
+  <!-- STAGE 12: Rose Petals Rain -->
   <div id="stage-12" class="screen">
-    <div class="title-gold">Sweet Treat 🧁</div>
-    <div class="subtitle-light">Step 12: Tap cupcake</div>
-    <div class="big-icon" onclick="triggerRain('🧁'); showNextBtn('cupcakeNextBtn');">🧁</div>
-    <button class="btn-global" id="cupcakeNextBtn" style="display:none;" onclick="openStage(13)">Next Step ➔</button>
+    <div class="title-gold">Rose Petals Shower 🌹</div>
+    <div class="subtitle-light">Step 12: Tap rose for flower rain</div>
+    <div class="big-icon" onclick="triggerSlowRain('🌹'); showNextBtn('roseNextBtn');">🌹</div>
+    <button class="btn-global" id="roseNextBtn" style="display:none;" onclick="openStage(13)">Next Step ➔</button>
   </div>
 
-  <!-- STAGE 13: Vinyl Music Player -->
+  <!-- STAGE 13: Gramophone Music -->
   <div id="stage-13" class="screen">
     <div class="title-gold">Birthday Melody 🎵</div>
     <div class="subtitle-light">Step 13: Spin record & play tune</div>
@@ -287,27 +317,27 @@
     <button class="key-btn" style="margin-top:12px;" onclick="openStage(15)">Final Voice Wish 🎤</button>
   </div>
 
-  <!-- STAGE 15: Final Voice Wish & Celebration Rain -->
+  <!-- STAGE 15: Final Voice Wish -->
   <div id="stage-15" class="screen">
     <div class="title-gold">Special Voice Wish 🎤</div>
     <div class="subtitle-light">Amir's Special Message for ZoYa</div>
-    <div class="big-icon" onclick="triggerRain('💖'); speakWish();">💖</div>
-    <button class="btn-global" style="background:#2ecc71;" onclick="triggerRain('💖'); speakWish();">🔊 Play Voice Wish</button>
-    <button class="btn-global" style="background:#e74c3c;" onclick="openStage(1)">↺ Replay All 15 Steps</button>
+    <div class="big-icon" onclick="triggerSlowRain('💖'); speakWish();">💖</div>
+    <button class="btn-global" style="background:#2ecc71;" onclick="triggerSlowRain('💖'); speakWish();">🔊 Play Voice Wish</button>
+    <button class="btn-global" style="background:#e74c3c;" onclick="openStage(1)">↺ Replay Experience</button>
   </div>
 
   <script>
-    // Audio Context for musical note taps
     const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
-    function playNote(freq, type = 'sine', duration = 0.15) {
+    // Soft melody tone generator
+    function playMelodyTone(freq, duration = 0.2) {
       try {
         if (audioCtx.state === 'suspended') audioCtx.resume();
         const osc = audioCtx.createOscillator();
         const gain = audioCtx.createGain();
-        osc.type = type;
+        osc.type = 'sine';
         osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-        gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+        gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
         gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
         osc.connect(gain);
         gain.connect(audioCtx.destination);
@@ -316,23 +346,58 @@
       } catch(e) {}
     }
 
-    // Rain effect generator
-    function triggerRain(emoji) {
-      playNote(523.25); // C5 note
-      for (let i = 0; i < 20; i++) {
+    // Real Pop sound effect for balloons
+    function playRealBalloonPopSound() {
+      try {
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'square';
+        osc.frequency.setValueAtTime(120, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(30, audioCtx.currentTime + 0.1);
+        gain.gain.setValueAtTime(0.8, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.1);
+      } catch(e) {}
+    }
+
+    // Firecracker Boom Explosion Sound
+    function playFirecrackerBoomSound() {
+      try {
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(220, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(40, audioCtx.currentTime + 0.3);
+        gain.gain.setValueAtTime(0.9, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.3);
+      } catch(e) {}
+    }
+
+    // Slow Rain Generator Effect
+    function triggerSlowRain(emoji) {
+      playMelodyTone(523.25);
+      for (let i = 0; i < 18; i++) {
         let el = document.createElement('div');
         el.className = 'rain-item';
         el.innerText = emoji;
-        el.style.left = Math.random() * 100 + 'vw';
-        el.style.animationDuration = (Math.random() * 1.5 + 1) + 's';
-        el.style.fontSize = (Math.random() * 20 + 20) + 'px';
+        el.style.left = Math.random() * 95 + 'vw';
+        el.style.animationDuration = (Math.random() * 2 + 2.5) + 's'; // Slow smooth fall
+        el.style.fontSize = (Math.random() * 15 + 22) + 'px';
         document.body.appendChild(el);
-        setTimeout(() => { el.remove(); }, 2500);
+        setTimeout(() => { el.remove(); }, 4500);
       }
     }
 
     function openStage(num) {
-      playNote(659.25); // E5 note
       var screens = document.querySelectorAll('.screen');
       for (var i = 0; i < screens.length; i++) {
         screens[i].classList.remove('active');
@@ -347,7 +412,7 @@
     }
 
     function openLock() {
-      playNote(440);
+      playMelodyTone(440);
       var lock = document.getElementById('lockIcon');
       if (lock) lock.innerText = '🔓';
       setTimeout(function() { openStage(3); }, 800);
@@ -357,31 +422,35 @@
     function extinguishCandle(el) {
       var flame = el.querySelector('.flame-light');
       if (flame && !flame.classList.contains('off')) {
-        playNote(587.33); // D5
+        playMelodyTone(587.33);
         flame.classList.add('off');
         candlesOut++;
         if (candlesOut === 4) {
-          triggerRain('🎂');
+          triggerSlowRain('🎂');
           setTimeout(function() { openStage(4); }, 1000);
         }
       }
     }
 
-    var poppedCount = 0;
-    function popBalloon(el) {
-      if (!el.classList.contains('popped')) {
-        playNote(698.46); // F5
-        el.classList.add('popped');
-        poppedCount++;
-        if (poppedCount === 4) {
-          triggerRain('🎈');
-          setTimeout(function() { openStage(5); }, 900);
+    // Real Flying Balloon Pop Logic
+    var balloonsPopped = 0;
+    function popBalloonReal(el) {
+      if (el.style.display !== 'none') {
+        playRealBalloonPopSound();
+        el.innerText = '💥';
+        setTimeout(function() {
+          el.style.display = 'none';
+        }, 150);
+        balloonsPopped++;
+        if (balloonsPopped === 4) {
+          triggerSlowRain('🎈');
+          setTimeout(function() { openStage(5); }, 1000);
         }
       }
     }
 
     function revealCrystalWish() {
-      playNote(783.99); // G5
+      playMelodyTone(783.99);
       document.getElementById('crystalWishBox').innerText = "✨ May life bless ZoYa with endless joy & positivity!";
       document.getElementById('crystalNextBtn').style.display = 'inline-block';
     }
@@ -390,20 +459,43 @@
       document.getElementById(id).style.display = 'inline-block';
     }
 
+    // Rocket Firecracker Show
+    function launchFireworks() {
+      for (let i = 0; i < 5; i++) {
+        setTimeout(function() {
+          var rocket = document.createElement('div');
+          rocket.className = 'rocket-firework';
+          rocket.innerText = '🚀';
+          rocket.style.left = (Math.random() * 70 + 15) + '%';
+          document.body.appendChild(rocket);
+
+          setTimeout(function() {
+            playFirecrackerBoomSound();
+            rocket.innerText = '🎆';
+            triggerSlowRain('✨');
+            setTimeout(function() { rocket.remove(); }, 400);
+          }, 1000);
+        }, i * 500);
+      }
+      setTimeout(function() {
+        document.getElementById('firecrackerNextBtn').style.display = 'inline-block';
+      }, 3200);
+    }
+
     function playBirthdayTune() {
-      playNote(523.25, 'triangle', 0.4);
-      setTimeout(() => playNote(523.25, 'triangle', 0.4), 400);
-      setTimeout(() => playNote(587.33, 'triangle', 0.8), 800);
-      setTimeout(() => playNote(523.25, 'triangle', 0.8), 1600);
-      setTimeout(() => playNote(698.46, 'triangle', 0.8), 2400);
-      setTimeout(() => playNote(659.25, 'triangle', 1.2), 3200);
+      playMelodyTone(523.25, 0.4);
+      setTimeout(() => playMelodyTone(523.25, 0.4), 400);
+      setTimeout(() => playMelodyTone(587.33, 0.8), 800);
+      setTimeout(() => playMelodyTone(523.25, 0.8), 1600);
+      setTimeout(() => playMelodyTone(698.46, 0.8), 2400);
+      setTimeout(() => playMelodyTone(659.25, 1.2), 3200);
       
       var disc = document.getElementById('vinylDisc');
       if(disc) disc.classList.add('spinning');
-      triggerRain('🎵');
+      triggerSlowRain('🎵');
     }
 
-    // Corrected & Cleaned Voice Wish as requested
+    // Clear Voice Wish
     function speakWish() {
       if ('speechSynthesis' in window) {
         window.speechSynthesis.cancel();
@@ -413,11 +505,11 @@
         speech.rate = 0.8;
         speech.pitch = 1.2;
         window.speechSynthesis.speak(speech);
-        triggerRain('💖');
+        triggerSlowRain('💖');
       }
     }
 
-    // Background floating particles
+    // Background Canvas Stars
     var canvas = document.getElementById('particles-canvas');
     if (canvas && canvas.getContext) {
       var ctx = canvas.getContext('2d');
